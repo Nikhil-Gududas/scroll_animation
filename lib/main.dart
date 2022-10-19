@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import './horizontal_listview/horizontal_scroll_animations.dart';
-import './shrink_top_list/shrink_top_list.dart';
+import 'package:flutter/services.dart';
+import 'ui/horizontal_listview/horizontal_scroll_animations.dart';
+import 'ui/shrink_top_list/shrink_top_list.dart';
 import 'home_page.dart';
 
 void main() {
+  SystemUiOverlayStyle(statusBarColor: Colors.transparent);
   runApp(const MyApp());
 }
 

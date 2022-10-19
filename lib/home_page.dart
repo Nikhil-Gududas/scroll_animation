@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:scroll_animation/horizontal_listview/horizontal_scroll_animations.dart';
-import 'package:scroll_animation/shrink_top_list/shrink_top_list.dart';
+import 'package:scroll_animation/ui/horizontal_listview/horizontal_scroll_animations.dart';
+import 'package:scroll_animation/ui/shrink_top_list/shrink_top_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

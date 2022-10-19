@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'data.dart';
+import 'package:scroll_animation/models/shoe.dart';
+import '../../data.dart';
 
 class HorizontalScrollAnimations extends StatefulWidget {
   const HorizontalScrollAnimations({super.key});
@@ -12,12 +13,13 @@ class HorizontalScrollAnimations extends StatefulWidget {
 
 class _HorizontalScrollAnimationsState
     extends State<HorizontalScrollAnimations> {
-  final itemList = data;
+  List<Shoe> itemList = [];
   final listScrollController = ScrollController();
   var scrollDirection = ScrollDirection.idle;
 
   @override
   void initState() {
+    itemList = Shoe.getData(data);
     listScrollController.addListener(() {
       setState(() {
         scrollDirection = listScrollController.position.userScrollDirection;
@@ -66,12 +68,11 @@ class _HorizontalScrollAnimationsState
                             horizontal: 16, vertical: 16),
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                            color: Color(int.parse(e["color"].toString())),
+                            color: Color(e.color),
                             borderRadius: BorderRadius.circular(12),
                             boxShadow: [
                               BoxShadow(
-                                  color: Color(int.parse(e["color"].toString()))
-                                      .withOpacity(0.5),
+                                  color: Color(e.color).withOpacity(0.5),
                                   offset: const Offset(-4, 4),
                                   blurRadius: 16),
                             ]),
@@ -79,14 +80,14 @@ class _HorizontalScrollAnimationsState
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.network(
-                              e["imagePath"].toString(),
+                              e.imageUrl,
                               height: 120,
                             ),
                             const SizedBox(
                               height: 20,
                             ),
                             Text(
-                              e["title"].toString(),
+                              e.title,
                               style: const TextStyle(
                                   fontSize: 28, color: Colors.white),
                             )
